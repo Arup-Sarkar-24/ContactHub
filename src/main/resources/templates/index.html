@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="parent(content)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-th-text="${pageName}">Index</title>
+  <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+</head>
+<body>
+<!-- common header -->
+<div data-th-replace="navbar :: navbar"></div>
+
+<!-- main content -->
+<div class="p-4">
+<section data-th-replace="${content}"></section>
+</div>
+
+<!-- common footer -->
+<footer class="p-4">Footer: Developed by Arup</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</body>
+</html>
