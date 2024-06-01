@@ -36,4 +36,18 @@ public class PageController {
         model.addAttribute("pageName","Contact");
         return "contact";
     }
+
+    @RequestMapping("/login")
+    public String login(Model model){
+        System.out.println("login page handler");
+        model.addAttribute("pageName","Login");
+        return "login";
+    }
+
+    @RequestMapping("/register")
+    public String register(Model model){
+        System.out.println("register page handler");
+        model.addAttribute("pageName","Contact");
+        return "register";
+    }
 }
