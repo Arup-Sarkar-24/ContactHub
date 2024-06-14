@@ -3,24 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" />
 </head>
 <body>
 <div id="content">
-    <h1>This is signup page</h1>
-    <p>
-        Like a war file, a Spring Boot application is not intended to be used as a dependency. If your
-        application contains classes that you want to share with other projects, the recommended approach
-        is to move that code into a separate module. The separate module can then be depended upon by
-        your application and other projects.
-        If you cannot rearrange your code as recommended above, Spring Boot’s Maven and Gradle plugins
-        must be configured to produce a separate artifact that is suitable for use as a dependency. The
-        executable archive cannot be used as a dependency as the executable jar format packages
-        application classes in BOOT-INF/classes. This means that they cannot be found when the executable
-        jar is used as a dependency.
-        To produce the two artifacts, one that can be used as a dependency and one that is executable, a
-        classifier must be specified. This classifier is applied to the name of the executable archive, leaving
-        the default archive for use as a dependency.
-    </p>
+    <div class="grid grid-cols-12 md:grid-cols-12">
+        <div class="col-span-4 md:col-span-4 lg:col-span-3 xl:col-span-4"></div>
+        <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4">
+            <!--Card-->
+            <div class="block p-6 border-t-[10px] border-blue-700 bg-white rounded-xl shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-blue-700 dark:hover:bg-gray-700">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Signup Here!</h5>
+                <p class="font-normal text-gray-400 dark:text-gray-400">Start managing contacts on the cloud...</p>
+                <form data-th-action="@{'/do-register'}" method="post" data-th-object="${userForm}" class="mt-5">
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                        <input type="text" id="name" data-th-field="*{name}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your name" required />
+                    </div>
+                    <!-- Contact -->
+                    <div class="mb-3 mt-5">
+                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact No</label>
+                        <input type="tel" id="phone" data-th-field="*{phone}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your contact number" required />
+                    </div>
+                    <!-- Email -->
+                    <div class="mb-3 mt-5">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                        <input type="email" id="email" data-th-field="*{email}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your email" required />
+                        <div id="emailFeedback" class="feedback"></div>
+                    </div>
+                    <!-- Password -->
+                    <div class="mb-3 mt-5">
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="password" id="password" data-th-field="*{password}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your password" required />
+                        <div id="passwordFeedback" class="feedback"></div>
+                    </div>
+                    <!-- Confirm Password -->
+                    <div class="mb-3 mt-5">
+                        <label for="checkPassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
+                        <input type="password" id="checkPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Re-enter your password" required />
+                        <div id="checkPasswordFeedback" class="feedback"></div>
+                    </div>
+                    <!-- Confirm Password -->
+                    <div>
+                    <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">About</label>
+                    <textarea id="about" data-th-field="*{about}" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write something about you here..."></textarea>
+                    </div>
+                    <!-- Submit Reset Button -->
+                    <div class="mb-2 mt-2 flex justify-center space-x-3">
+                        <button type="submit" class="w-full text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Register</button>
+                        <button type="reset" class="w-full text-white bg-red-800 hover:bg-red-900 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-span-1 md:col-span-2"></div>
+    </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<script>console.log("Signup Page")</script>
 </body>
 </html>

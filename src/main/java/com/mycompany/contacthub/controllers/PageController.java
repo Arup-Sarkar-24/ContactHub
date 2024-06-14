@@ -1,8 +1,11 @@
 package com.mycompany.contacthub.controllers;
 
+import com.mycompany.contacthub.forms.UserForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class PageController {
@@ -48,6 +51,25 @@ public class PageController {
     public String register(Model model){
         System.out.println("register page handler");
         model.addAttribute("pageName","Contact");
+        UserForm userForm = new UserForm();
+        userForm.setName("Arup");
+        //we can use default data also
+        model.addAttribute("userForm",userForm);
         return "register";
+    }
+
+    //processing register form
+
+    @RequestMapping(value = "/do-register", method = RequestMethod.POST)
+    public String processRequest(@ModelAttribute UserForm userForm){
+        System.out.println("Processing Register");
+        //fetch form data
+        //userForm
+        //validate data
+        //save to database
+        //message = "Registration Successful"
+        //redirect login page
+        return "redirect:/register";
+
     }
 }
